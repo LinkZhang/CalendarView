@@ -59,9 +59,9 @@ public final class Calendar implements Serializable {
     private boolean isCurrentMonth;
 
     /**
-     * 是否是今天
+     * 今天
      */
-    private boolean isCurrentDay;
+    private Calendar mCurrentDay;
 
     /**
      * 农历字符串，没有特别大的意义，用来做简单的农历或者节日标记
@@ -149,19 +149,27 @@ public final class Calendar implements Serializable {
         return isCurrentMonth;
     }
 
-
     public void setCurrentMonth(boolean currentMonth) {
         this.isCurrentMonth = currentMonth;
     }
 
     public boolean isCurrentDay() {
-        return isCurrentDay;
+        return getDay() == mCurrentDay.getDay()
+                && getMonth() == mCurrentDay.getMonth()
+                && getYear() == mCurrentDay.getYear();
     }
 
-    public void setCurrentDay(boolean currentDay) {
-        isCurrentDay = currentDay;
+
+    /**
+     * 日期比当前日期
+     * */
+    public boolean isDayPassed(){
+       return differ(mCurrentDay) > 0;
     }
 
+    public void setCurrentDay(Calendar currentDay) {
+        mCurrentDay = currentDay;
+    }
 
     public String getLunar() {
         return lunar;

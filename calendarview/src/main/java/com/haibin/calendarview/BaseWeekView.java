@@ -87,7 +87,7 @@ public abstract class BaseWeekView extends BaseView {
         }
 
 
-        currentCalendar.setCurrentDay(currentCalendar.equals(mDelegate.getCurrentDay()));
+        currentCalendar.setCurrentDay(mDelegate.getCurrentDay());
         mDelegate.mInnerListener.onWeekDateSelected(currentCalendar, false);
         int i = CalendarUtil.getWeekFromDayInMonth(currentCalendar, mDelegate.getWeekStart());
         mParentLayout.updateSelectWeek(i);
@@ -199,10 +199,8 @@ public abstract class BaseWeekView extends BaseView {
             return;
         if (mItems.contains(mDelegate.getCurrentDay())) {
             for (Calendar a : mItems) {//添加操作
-                a.setCurrentDay(false);
+                a.setCurrentDay(mDelegate.getCurrentDay());
             }
-            int index = mItems.indexOf(mDelegate.getCurrentDay());
-            mItems.get(index).setCurrentDay(true);
         }
         invalidate();
     }

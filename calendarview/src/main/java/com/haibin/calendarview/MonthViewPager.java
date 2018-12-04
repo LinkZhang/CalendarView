@@ -277,7 +277,7 @@ public final class MonthViewPager extends ViewPager {
         calendar.setYear(year);
         calendar.setMonth(month);
         calendar.setDay(day);
-        calendar.setCurrentDay(calendar.equals(mDelegate.getCurrentDay()));
+        calendar.setCurrentDay(mDelegate.getCurrentDay());
         LunarCalendar.setupLunarCalendar(calendar);
         mDelegate.mIndexCalendar = calendar;
         mDelegate.mSelectedCalendar = calendar;

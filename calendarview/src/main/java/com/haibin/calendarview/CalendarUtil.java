@@ -585,9 +585,9 @@ final class CalendarUtil {
                 calendarDate.setCurrentMonth(true);
                 calendarDate.setDay(i - mPreDiff + 1);
             }
-            if (calendarDate.equals(currentDate)) {
-                calendarDate.setCurrentDay(true);
-            }
+
+            calendarDate.setCurrentDay(currentDate);
+
             LunarCalendar.setupLunarCalendar(calendarDate);
             mItems.add(calendarDate);
         }
@@ -643,9 +643,9 @@ final class CalendarUtil {
         selectCalendar.setYear(date.get(java.util.Calendar.YEAR));
         selectCalendar.setMonth(date.get(java.util.Calendar.MONTH) + 1);
         selectCalendar.setDay(date.get(java.util.Calendar.DAY_OF_MONTH));
-        if (selectCalendar.equals(mDelegate.getCurrentDay())) {
-            selectCalendar.setCurrentDay(true);
-        }
+
+        selectCalendar.setCurrentDay(mDelegate.getCurrentDay());
+
         LunarCalendar.setupLunarCalendar(selectCalendar);
         selectCalendar.setCurrentMonth(true);
         mItems.add(selectCalendar);
@@ -657,9 +657,9 @@ final class CalendarUtil {
             calendarDate.setYear(date.get(java.util.Calendar.YEAR));
             calendarDate.setMonth(date.get(java.util.Calendar.MONTH) + 1);
             calendarDate.setDay(date.get(java.util.Calendar.DAY_OF_MONTH));
-            if (calendarDate.equals(mDelegate.getCurrentDay())) {
-                calendarDate.setCurrentDay(true);
-            }
+
+            calendarDate.setCurrentDay(mDelegate.getCurrentDay());
+
             LunarCalendar.setupLunarCalendar(calendarDate);
             calendarDate.setCurrentMonth(true);
             mItems.add(calendarDate);
@@ -736,7 +736,7 @@ final class CalendarUtil {
         }
         calendar.setCurrentMonth(calendar.getYear() == delegate.getCurrentDay().getYear() &&
                 calendar.getMonth() == delegate.getCurrentDay().getMonth());
-        calendar.setCurrentDay(calendar.equals(delegate.getCurrentDay()));
+        calendar.setCurrentDay(delegate.getCurrentDay());
         LunarCalendar.setupLunarCalendar(calendar);
         return calendar;
     }

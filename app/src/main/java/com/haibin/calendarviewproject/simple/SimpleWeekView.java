@@ -46,6 +46,8 @@ public class SimpleWeekView extends WeekView {
         canvas.drawCircle(cx, cy, mRadius, mSchemePaint);
     }
 
+
+
     @Override
     protected void onDrawText(Canvas canvas, Calendar calendar, int x, boolean hasScheme, boolean isSelected) {
         float baselineY = mTextBaseLine;
@@ -65,7 +67,7 @@ public class SimpleWeekView extends WeekView {
         } else {
             canvas.drawText(String.valueOf(calendar.getDay()), cx, baselineY,
                     calendar.isCurrentDay() ? mCurDayTextPaint :
-                            calendar.isCurrentMonth() ? mCurMonthTextPaint : mCurMonthTextPaint);
+                            (calendar.isDayPassed() || !calendar.isCurrentMonth()) ?mOtherMonthTextPaint:mCurMonthTextPaint);
         }
     }
 }

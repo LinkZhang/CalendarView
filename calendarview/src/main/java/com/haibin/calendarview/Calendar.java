@@ -167,6 +167,10 @@ public final class Calendar implements Serializable {
        return differ(mCurrentDay) > 0;
     }
 
+    public Calendar getCurrentDay() {
+        return mCurrentDay;
+    }
+
     public void setCurrentDay(Calendar currentDay) {
         mCurrentDay = currentDay;
     }

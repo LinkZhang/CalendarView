@@ -28,6 +28,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 
 import java.lang.reflect.Constructor;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -81,7 +82,19 @@ public class CalendarView extends FrameLayout {
     public CalendarView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mDelegate = new CalendarViewDelegate(context, attrs);
+        mDelegate.setCurrentDay(getYesterday());
         init(context);
+    }
+
+    Calendar getYesterday() {
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.add(java.util.Calendar.DATE, -1);
+        Date d = calendar.getTime();
+        Calendar yesterDate = new Calendar();
+        yesterDate.setYear(CalendarUtil.getDate("yyyy",d));
+        yesterDate.setMonth(CalendarUtil.getDate("MM",d));
+        yesterDate.setDay(CalendarUtil.getDate("dd",d));
+        return yesterDate;
     }
 
     /**

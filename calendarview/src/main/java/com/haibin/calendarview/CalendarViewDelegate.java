@@ -976,4 +976,8 @@ final class CalendarViewDelegate {
         addSchemesFromMap(calendars);
         return calendars;
     }
+
+    public void setCurrentDay(Calendar yesterday) {
+        mCurrentDate = yesterday;
+    }
 }

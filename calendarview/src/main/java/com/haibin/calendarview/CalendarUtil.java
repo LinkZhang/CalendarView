@@ -44,7 +44,7 @@ final class CalendarUtil {
      */
     static boolean isWeekend(Calendar calendar) {
         int week = getWeekFormCalendar(calendar);
-        return week == 0 || week == 6;
+        return week == 0;
     }
 
     /**

@@ -82,13 +82,13 @@ public class CalendarView extends FrameLayout {
     public CalendarView(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mDelegate = new CalendarViewDelegate(context, attrs);
-        mDelegate.setCurrentDay(getYesterday());
+        mDelegate.setCurrentDay(getCurrentday());
         init(context);
     }
 
-    Calendar getYesterday() {
+
+    Calendar getCurrentday() {
         java.util.Calendar calendar = java.util.Calendar.getInstance();
-        calendar.add(java.util.Calendar.DATE, -1);
         Date d = calendar.getTime();
         Calendar yesterDate = new Calendar();
         yesterDate.setYear(CalendarUtil.getDate("yyyy",d));
